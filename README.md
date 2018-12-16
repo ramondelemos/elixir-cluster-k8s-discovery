@@ -1,2 +1,2 @@
 # elixir-cluster-k8s-discovery
-Elixir auto discovery cluster application
+Elixir auto discovery cluster application with kubernetes dns
