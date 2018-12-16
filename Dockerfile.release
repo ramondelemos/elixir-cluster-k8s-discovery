@@ -1,0 +1,14 @@
+FROM elixir:1.6-otp-21
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PORT=8000 MIX_ENV=prod REPLACE_OS_VARS=true SHELL=/bin/bash
+
+EXPOSE 8000
+
+WORKDIR /app
+
+COPY ./myapp.tar.gz ./
+
+RUN tar xfz myapp.tar.gz
+
+ENTRYPOINT ["bin/myapp"]

@@ -2,8 +2,11 @@
 /cover
 /deps
 /doc
+/assets
 /.fetch
 erl_crash.dump
 *.ez
 *.beam
+*.tar.gz
 /config/*.secret.exs
+.elixir_ls/

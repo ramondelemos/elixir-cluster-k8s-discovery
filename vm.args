@@ -1,0 +1,2 @@
+-name ${APP_CLUSTER_NAME}@${K8S_POD_IP}
+-setcookie mymagiccookie

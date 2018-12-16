@@ -1,0 +1,40 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: myapp
+          image: ramondelemos/myapp:release
+          ports:
+            - containerPort: 8000
+          args: ["foreground"]
+          env:
+            - name: HOST
+              value: "example.com"
+            - name: SECRET_KEY_BASE
+              value: "gAEh6wlgf47oY2dStUfPXFvTuynZgmqsIkJsL+JBX2EsMrJgSkA9ng0EqwQV+hCe"
+            - name: DB_USERNAME
+              value: "postgres"
+            - name: DB_PASSWORD
+              value: "postgres"
+            - name: DB_DATABASE
+              value: "myapp_dev"
+            - name: DB_HOSTNAME
+              value: "postgres"
+            - name: DB_PORT
+              value: "5432"
+            - name: APP_CLUSTER_NAME
+              value: "myapp"
+            - name: K8S_DNS_NAME
+              value: "myapp-service-headless.default.svc.cluster.local"
+            - name: K8S_POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
